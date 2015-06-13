@@ -1,0 +1,23 @@
+﻿@model Events.Web.Models.EventViewModel
+
+<div class="col-md-4">
+    <div class="event-box">
+        <h2>@Model.Title</h2>
+        <p>@Model.StartDateTime</p>
+        @if (Model.Duration != null)
+        {
+            @Model.Duration.ToString()
+        }
+        
+        @if (Model.Author != null)
+        {
+            <p>Author: @Model.Author</p>
+        }
+
+        @if (Model.Location != null)
+        {
+            <p>Author: @Model.Location</p>
+        }
+    </div>
+</div>
+

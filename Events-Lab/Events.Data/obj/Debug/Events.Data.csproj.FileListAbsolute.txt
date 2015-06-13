@@ -1,0 +1,13 @@
+C:\gm\Events-Lab\Events.Data\bin\Debug\Events.Data.dll.config
+C:\gm\Events-Lab\Events.Data\bin\Debug\Events.Data.dll
+C:\gm\Events-Lab\Events.Data\bin\Debug\Events.Data.pdb
+C:\gm\Events-Lab\Events.Data\bin\Debug\EntityFramework.dll
+C:\gm\Events-Lab\Events.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\gm\Events-Lab\Events.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\gm\Events-Lab\Events.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\gm\Events-Lab\Events.Data\bin\Debug\EntityFramework.xml
+C:\gm\Events-Lab\Events.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\gm\Events-Lab\Events.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\gm\Events-Lab\Events.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\gm\Events-Lab\Events.Data\obj\Debug\Events.Data.dll
+C:\gm\Events-Lab\Events.Data\obj\Debug\Events.Data.pdb
