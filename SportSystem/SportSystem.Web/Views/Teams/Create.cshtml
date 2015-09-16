@@ -1,0 +1,35 @@
+﻿@model SportSystem.Web.InputModel.TeamImputModel
+@{
+    ViewBag.Title = "Create Team";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.LabelFor(x => x.TeamName)
+    @Html.EditorFor(x => x.TeamName)
+    @Html.ValidationMessageFor(x => x.TeamName)
+    <br />
+    @Html.LabelFor(x => x.WebSite)
+    @Html.EditorFor(x => x.WebSite)
+    @Html.ValidationMessageFor(x => x.WebSite)
+    <br />
+    @Html.LabelFor(x => x.Nickname)
+    @Html.EditorFor(x => x.Nickname)
+    @Html.ValidationMessageFor(x => x.Nickname)
+    <br />
+    @Html.LabelFor(x => x.DateFounded)
+    @Html.EditorFor(x => x.DateFounded)
+    @Html.ValidationMessageFor(x => x.DateFounded)
+    <br />
+    <input type="submit" name="submit" value="Add Team" />
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

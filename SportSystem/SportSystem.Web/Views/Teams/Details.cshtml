@@ -1,0 +1,74 @@
+﻿@model SportSystem.Web.Models.TeamDetailsViewModel
+@{
+    ViewBag.Title = "Team Details";
+}
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <div class="col-lg-10">
+        <h2>@Model.Name</h2>
+        <p>Nickname: <strong>@Model.Nickname</strong>
+        </p>
+        <p>Founded: <strong>@Model.DateFounded</strong>
+        </p>
+    </div>
+
+    <div class="col-lg-2">
+        <div id="votes" class="pull-right">
+            <div>
+                Votes: <span id="votes-count">@Model.Votes</span>
+                @if (!Model.UserHasVoted)
+                {
+                    <div id="vote-button">
+                        @using (Ajax.BeginForm("Vote", "Teams", new { TeamId = Model.Id }, new AjaxOptions()
+                        {
+                            HttpMethod = "POST",
+                            UpdateTargetId = "votes-count",
+                            InsertionMode = InsertionMode.Replace,
+                            OnSuccess = "onVoteSuccess"
+                        }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="submit" name="name" class="btn btn-success" value="+" />
+                        }
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <h3>Players:</h3>
+    @if (Model.Players.Any())
+    {
+        foreach (var player in @Model.Players)
+        {
+            <div class="well col-lg-6">
+                <h3>Name: @player.Name</h3>
+                <p>Height: @player.Height</p>
+                <p>Born: @player.BirthDate</p>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="well col-lg-6">
+            <h3>No players</h3>
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function onAddCommentSuccess() {
+            document.getElementById("content").value = '';
+        }
+
+        function onVoteSuccess() {
+            var button = document.getElementById("vote-button");
+            button.parentNode.removeChild(button);
+        }
+    </script>
+}

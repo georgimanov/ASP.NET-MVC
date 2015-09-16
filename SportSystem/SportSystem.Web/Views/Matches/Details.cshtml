@@ -1,0 +1,71 @@
+﻿@model SportSystem.Web.Models.MatchDetailsViewModel
+
+@{
+    ViewBag.Title = "Match Details";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="body-content">
+        <div class="col-lg-6">
+            <h2>Match:</h2>
+
+            <p>Home Team: @Html.ActionLink((Model.HomeTeamName), "Details", "Teams", new { id = Model.HomeTeamId }, new { @class = "btn btn-default" }) (Bets: $580)</p>
+            <p>Away Team: @Html.ActionLink((Model.AwayTeamName), "Details", "Teams", new { id = Model.AwayTeamId }, new { @class = "btn btn-default" }) (Bets: $20)</p>
+            <p>Start: @Model.MatchDate</p>
+        </div>
+        <div class="col-lg-6">
+            <h2>Bets:</h2>
+            <p>
+                Home Bet: <input /> <button class="btn btn-primary">Bet</button>
+            </p>
+            <p>
+                Away Bet: <input /> <button class="btn btn-primary">Bet</button>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @if (Model.Comments.Any())
+    {
+        foreach (var comment in @Model.Comments)
+        {
+            <div class="well col-lg-6">
+                @*@if (comment.Author.Email != null)
+                    {
+                        <strong>@comment.Author.Email</strong>
+                    }
+                    else
+                    {
+                        <strong>User: </strong>
+                    }*@
+                <p>@comment.Content</p>
+                <p><strong>Created on:</strong>@comment.Date</p>
+
+            </div>
+            <div class="clearfix"></div>
+        }
+    }
+    else
+    {
+        <div class="well col-lg-6">
+            <h3>No comments</h3>
+        </div>
+    }
+</div>
+<div class="clearfix"></div>
+
+<h2>Add Comment</h2>
+@using (Ajax.BeginForm("AddComment", "Matches", new { MatchId = Model.Id }, new AjaxOptions()
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.InsertAfter,
+    UpdateTargetId = "comments",
+    OnSuccess = "onAddCommentSuccess"
+}))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="text" id="content" name="content" value="" />
+    <input type="submit" name="name" value="Add Comment" />
+}

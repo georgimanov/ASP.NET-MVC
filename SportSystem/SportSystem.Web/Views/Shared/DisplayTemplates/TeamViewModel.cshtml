@@ -1,0 +1,13 @@
+﻿@model SportSystem.Web.Models.TeamViewModel
+@{
+    ViewBag.Title = "TeamViewModel";
+}
+<div class="well">
+    <h2>@Model.TeamName</h2>
+    <p>
+        @Html.ActionLink("Details", "Details", "Teams", new { id = Model.TeamId }, new { @class = "btn btn-default" })
+    </p>
+    <br />
+    <a href="@Model.WebSite">@Model.WebSite</a>
+    <p class="pull-right">Votes: @Model.Votes</p>
+</div>

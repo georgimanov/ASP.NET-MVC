@@ -1,0 +1,30 @@
+﻿@model SportSystem.Web.Models.TopMatchesBestTeamsViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Top Matches:</h2>
+        @if (Model.Matches.Any())
+        {
+            @Html.DisplayFor(x => x.Matches);
+        }
+        else
+        {
+            <p>No matches</p>
+        }
+    </div>
+    <div class="col-md-6">
+        <h2>Best Teams:</h2>
+        @if (Model.Teams.Any())
+        {
+            @Html.DisplayFor(x => x.Teams);
+        }
+        else
+        {
+            <p>No teams</p>
+        }
+    </div>
+</div>

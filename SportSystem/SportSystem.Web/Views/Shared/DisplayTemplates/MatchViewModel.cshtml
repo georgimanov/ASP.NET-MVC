@@ -1,0 +1,11 @@
+﻿@model SportSystem.Web.Models.MatchViewModel
+@{
+    ViewBag.Title = "MatchViewModel";
+}
+<div class="well">
+    <h2>@Model.AwayTeamName vs. @Model.HomeTeamName</h2>
+    <p>
+        @Html.ActionLink("Details", "Details", "Matches", new { id = Model.Id }, new { @class = "btn btn-default" })
+    </p>
+    <p>Start: @Model.MatchDate</p>
+</div>
