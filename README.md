@@ -15,7 +15,4 @@
 |Recommended for small scale applications| Recommended for large scale applications |
 
 
-
-
-ref
-http://www.webdevelopmenthelp.net/2013/10/difference-between-asp-net-webform-and-asp-net-mvc.html
+http://csharpstar.com/asp-net-interview-questions-part-1/
