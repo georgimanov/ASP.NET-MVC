@@ -2,9 +2,9 @@
 
 # Difference betweeen ASP.NET WebForms and ASP.NET MVC
 ---
-
+|               |               |
+|:--------------|:--------------|
 |ASP.NET Web Forms|ASP.NET MVC|
-|:-------------:|:-------------:|
 |ASP.NET Web Forms uses Page controller pattern approach for rendering layout. In this approach, every page has it’s own controller i.e. code-behind file that processes the request.|ASP.NET MVC uses Front Controller approach. That approach means ,a common controller for all pages, processes the requests.|
 |No separation of concerns. As we discussed that every page (.aspx) has it’s own controller (code behind i.e. aspx.cs/.vb file), so both are tightly coupled.|Very clean separation of concerns. View and Controller are neatly separate.|
 |Because of this coupled behavior, automated testing is really difficult.|Testability is key feature in ASP.NET MVC. Test driven development is quite simple using this approach.|
