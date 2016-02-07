@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Calculator";
+}
+
+<div class="jumbotron">
+    <form method="post" class="form-inline text-left">
+        <div class="control-group">
+            <label class="control-label" for="qt">Quantity</label>
+            <div class="controls">
+                <input class="form-control" name="quantity" type="text" value="1" >
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="type">Type</label>
+            <div class="controls">
+                <select name="type" onchange="change()" class="form-control">
+                    <option value="B" >Bit - b</option>
+                    <option value="K">Kilobit - Kb</option>
+                    <option value="M">Megabit - Mb</option>
+                    <option value="G">Gigabit - Gb</option>
+                    <option value="T" selected="selected">Terabit - Tb</option>
+                </select>
+            </div>
+        </div>
+     
+           <div class="control-group">
+            <input class="btn btn-primary btn-sm" type="submit" value="GO">
+        </div>
+
+
+        <div id="resPost" style="margin-top:15px">
+
+
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <td colspan="2">
+                            Storage (Kilo = 1024 bits)
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in this.ViewBag.Result)
+                    {
+                        <tr>
+                            <td>@(x.Key)</td>
+                            <td>@(x.Value)</td>
+                        </tr>
+                    }
+              </tbody>
+            </table>
+
+        </div>
+
+    </form>
+</div>
+
