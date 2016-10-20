@@ -1,0 +1,10 @@
+﻿@model IEnumerable<MvcTemplate.Web.Areas.Administration.Models.CommentViewModel>
+@using MyAccountant.Infrastructure.Helpers
+
+@{
+    ViewBag.Title = "All comments";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.FullFeaturedGrid<MvcTemplate.Web.Areas.Administration.Models.CommentViewModel>("Comments", c => c.Id) )

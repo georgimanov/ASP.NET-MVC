@@ -1,0 +1,11 @@
+﻿@model HttpPostedFileBase
+
+@{
+    var propertyName = this.ViewData.ModelMetadata.PropertyName;
+}
+
+@(Html.Kendo().Upload()
+      .Name(propertyName)
+      .Messages(x => x.Select("Избор на файл").Remove("Премахни"))
+      .Multiple(ViewBag.Multiple ?? true)
+)

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<MvcTemplate.Web.Areas.Administration.Models.IdeaViewModel>
+@using MyAccountant.Infrastructure.Helpers
+
+@{
+    ViewBag.Title = "All Ideas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.FullFeaturedGrid<MvcTemplate.Web.Areas.Administration.Models.IdeaViewModel>("Ideas", c => c.Id) )

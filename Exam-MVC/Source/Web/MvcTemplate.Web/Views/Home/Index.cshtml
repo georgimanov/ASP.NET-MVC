@@ -1,0 +1,75 @@
+﻿@model MvcTemplate.Web.ViewModels.Home.IndexViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>Ideas</h2>
+
+<div class="row">
+    @using (Html.BeginForm("Add", "Ideas", FormMethod.Post, new
+    {
+        @class = "form-horizontal",
+        role = "form"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>I suggest you ...</h4>
+        <hr />
+
+        <div class="form-group">
+            <input type="text" class="form-control" name="idea" placeholder="Enter your idea" required />
+            <br />
+            <textarea type="text" rows="6" class="form-control" name="description" placeholder="Enter description" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" class="btn btn-default pull-left" value="Post idea" />
+            </div>
+        </div>
+    }
+</div>
+<hr />
+<p class="col-lg-6">
+    <a class="btn btn-primary" href="/Home/Index/1">Top Ideas</a>
+    <a class="btn btn-default" role="button" href="/Home/ByDate/1">New</a>
+</p>
+@Html.Partial("_SearchPartial")
+<hr />
+
+@Html.DisplayFor(m => m.Ideas)
+
+    <nav>
+        <ul class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <li>
+                    <a href="/Home/Index/@(Model.CurrentPage - 1)" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+
+            @for (int i = 1; i < Model.TotalPages; i++)
+            {
+                var className = string.Empty;
+                if (Model.CurrentPage == i)
+                {
+                    className = "active";
+                }
+                <li class="@className"><a href="/Home/Index/@i">@i</a></li>
+            }
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li>
+                    <a href="/Home/Index/@(Model.CurrentPage+1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -1,0 +1,45 @@
+﻿@model MvcTemplate.Web.ViewModels.Ideas.IdeaDetailsViewModel
+@{
+    ViewBag.Title = "Idea details page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>@Html.DisplayFor(i => i.Idea)</h3>
+
+<hr />
+@using (Html.BeginForm("Add", "Comments", FormMethod.Post, new
+{
+    @class = "form-horizontal",
+    role = "form"
+}))
+{
+    @Html.AntiForgeryToken()
+    <h4>Add Comment</h4>
+    <div class="form-group">
+        <input type="hidden" name="id" value="@(Html.DisplayFor(m => m.Idea.Id))" />
+        <textarea type="text" rows="6" class="form-control" name="comment" placeholder="Add a comment ..." required></textarea>
+        <input type="email" class="form-control" name="email" placeholder="Your email address" required />
+        <br />
+    </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" class="btn btn-default pull-left" value="Post comment" />
+            </div>
+        </div>
+}
+<hr />
+
+<ul class="list-group">
+    @foreach (var comment in Model.Comments)
+    {
+        <li class="list-group-item">
+            <p>
+                @comment.AuthorEmail commented @comment.CreatedOn
+            </p>
+            <p>
+                @comment.Content
+            </p>
+        </li>
+    }
+</ul>

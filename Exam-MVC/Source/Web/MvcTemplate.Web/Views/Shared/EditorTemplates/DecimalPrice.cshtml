@@ -1,0 +1,10 @@
+﻿@model decimal
+
+@(Html.Kendo().NumericTextBoxFor(model => model)
+    .Min(0)
+    .Max(decimal.MaxValue)
+    .Decimals(2)
+    .Spinners(true)
+    .HtmlAttributes(new { style = "width: 30%", data_value_primitive = "true" })
+)
+
